@@ -30,8 +30,8 @@ function add(num1, num2) {
  * @param {string} message - a szöveg amit vissza kell adni.
  * @returns {string} - a kapott üzenet.
  */
-function logTheString(message) {
-    return;
+function logTheString(message = '') {
+    return message;
 }
 
 /**
@@ -42,8 +42,8 @@ function logTheString(message) {
  * @returns {string} `Hello <name>!` kifejezés, <name> = a kapott name.
  * @desc Példa a név beszúrására: `Howdy ${userName}!`
  */
-function getGreeting(name) {
-    return;
+function getGreeting(name = '') {
+    return `Hello ${name}!`;
 }
 
 /**
@@ -53,9 +53,9 @@ function getGreeting(name) {
  * @param {string} name A felhasználó neve.
  * @returns {string} `Hello <name>!` kifejezés, <name> = name nagy kezdőbetűvel.
  */
-function getTitleGreeting(name) {
+function getTitleGreeting(name = '') {
     const titleCaseName = name[0].toUpperCase() + name.slice(1);
-    return;
+    return `Hello ${titleCaseName}!`;
 }
 
 /**
@@ -65,8 +65,9 @@ function getTitleGreeting(name) {
  * @param {string} productName A termék neve.
  * @returns {string} `Product: <name>!`, <name> = productName nagy kezdőbetűvel.
  */
-function getProductDetails(productName) {
-    // 
+function getProductDetails(productName = '') {
+    const upperCaseProduct = productName[0].toUpperCase() + productName.slice(1);
+    return `Product: ${upperCaseProduct}!`
 }
 
 /**
@@ -78,7 +79,7 @@ function getProductDetails(productName) {
  */
 const getBruttoPrice = function(price) {
     const bruttoPrice = price * 1.27;
-    return;
+    return bruttoPrice;
 }
 
 /**
@@ -91,7 +92,7 @@ const getBruttoPrice = function(price) {
  */
 const getRoundedBruttoPrice = function(price) {
     const bruttoPrice = Math.round(price * 1.27);
-    return;
+    return bruttoPrice;
 }
 
 /**
@@ -103,7 +104,8 @@ const getRoundedBruttoPrice = function(price) {
  * @returns {number} a price 1.35-szöröse, egészre kerekítve.
  */
 const getSellPrice = function(price) {
-    // 
+    const newNumber = Math.round(price * 1.35);
+    return newNumber;
 }
 
 /**
@@ -115,7 +117,8 @@ const getSellPrice = function(price) {
  * @returns {number} a price 1.35-szörösének a 0.9-szerese, egészre kerekítve.
  */
 const getActionPrice = function(price) {
-    // 
+    const doubleMultipledNumber = Math.round((price * 1.35) * 0.9);
+    return doubleMultipledNumber;
 }
 
 /**
@@ -129,6 +132,10 @@ const getActionPrice = function(price) {
  * <stock> = a product.stock
  */
 const getProductDescrition = product => {
+    const name = product.name.charAt(0).toUpperCase() + product.name.slice(1)
+    const price = Math.round(product.price * 1.35);
+    const stock = product.stock;
+    return `${name}, $${price}, in stock: ${stock}`;
     // 
 }
 
@@ -145,7 +152,12 @@ const getProductDescrition = product => {
  * @desc EXPORTÁLNI KELL A FÜGGVÉNYT!
  */
 
-
+const getBio = member => {
+    const name = member.name.charAt(0).toUpperCase() + member.name.slice(1);
+    const age = member.age;
+    const city = member.city;
+    return `${name}, ${age} years old, live in: ${city}.`
+}
 
 /**
  * 11. feladat
@@ -160,7 +172,10 @@ const getProductDescrition = product => {
  * <city> = member városa
  */
 const getMemberDesc = (member = {name: 'jimmy', birthYear: 2000, city: 'SF'}) => {
+    const name = member.name.charAt(0).toUpperCase() + member.name.slice(1);
     const age = new Date().getFullYear() - member.birthYear;
+    const city = member.city;
+    return `${name}, ${age} years old, live in: ${city}.` 
 }
 
 /**
@@ -178,6 +193,12 @@ const getMemberDesc = (member = {name: 'jimmy', birthYear: 2000, city: 'SF'}) =>
  * @desc EXPORTÁLNI KELL A FÜGGVÉNYT!
  */
 
+const getCarDetails = (car={manufacturer: 'ford', year: 2010, type: 'fiesta'}) => {
+    const man = car.manufacturer.charAt(0).toUpperCase() + car.manufacturer.slice(1);
+    const age = new Date().getFullYear() - car.year;
+    const type = car.type.charAt(0).toUpperCase() + car.type.slice(1);
+    return `${man}, ${age} years old, type: ${type}.`
+}
 
 export {
     logTheString,
@@ -189,7 +210,7 @@ export {
     getSellPrice,
     getActionPrice,
     getProductDescrition,
-
+    getBio,
     getMemberDesc,
-    
+    getCarDetails,
 }
